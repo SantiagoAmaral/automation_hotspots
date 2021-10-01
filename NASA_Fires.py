@@ -151,7 +151,7 @@ if filter_1.shape[0] > 0:
   # criar um email
   email = outlook.CreateItem(0)
   # configurar as informações do seu e-mail
-  email.To = "ascom@inema.ba.gov.br; meteorologia@inema.ba.gov.br; alisson.amaral@inema.ba.gov.br"
+  email.To = "**"
   email.Subject = "Focos de Calor na Bahia - " + date_corr + " - COCEP/DIRAM"
 
   email.HTMLBody = f"""
