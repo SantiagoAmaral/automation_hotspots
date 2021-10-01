@@ -35,7 +35,7 @@ data_hj = datetime.date.today().strftime("%Y-%m-%d")
 data_arquivo = str(date.today().year) + str(datestdtojd(data_hj))
 
 #Nasa Authorization
-my_headers = {'Authorization' : 'Bearer {YWxpc3Nvbi5hbWFyYWw6WVd4cGMzTnZiaTVoYldGeVlXeEFhVzVsYldFdVltRXVaMjkyTG1KeToxNjI3MzA4NjEzOjhiZDhkOGM3OTlmMWUxMzVmMGM5ZGY1NjkxN2JhYmNhNzc3OGIzNGY}'}
+my_headers = {'Authorization' : 'Bearer {**}'}
 
 #Nasa_links
 noaa_link = 'https://nrt3.modaps.eosdis.nasa.gov/api/v2/content/archives/FIRMS/noaa-20-viirs-c2/South_America/J1_VIIRS_C2_South_America_VJ114IMGTDL_NRT_' + data_arquivo + '.txt'
