@@ -12,11 +12,18 @@ import time
 import matplotlib.pyplot as plt
 from datetime import date
 import six
-import xlsxwriter
+import os
 import pathlib
+import xlsxwriter
 
 import win32com.client as win32
 
+
+#Paths
+PATH = pathlib.Path().parent
+aqua_Path = PATH.joinpath("Y:\METEOROLOGIA\Boletins Meteorológicos\Boletim Diário de Focos de Calor\Dados_diarios\Satelite_referencia").resolve()
+list_dir = sorted(os.listdir(aqua_Path))
+date_data = [i[15:25] for i in list_dir]
 
 # Shapefiles
 municipios = gpd.read_file('./shp/municipios_2019.shp')
@@ -128,7 +135,6 @@ date_corr = date_corr.strftime('%d-%m-%Y')
 
 time_is_it = datetime.datetime.now().strftime('%H%M')
 
-filter_1 = data_aqte[(data_aqte['satellite']== 'AQUA') & (data_aqte['daynight'] == 'D')]
 
 #Save the Datas
  #--All Satellites
@@ -136,13 +142,14 @@ excel_data_final = pd.ExcelWriter('Y:/METEOROLOGIA/Boletins Meteorológicos/Bole
 data_final2.to_excel(excel_data_final, sheet_name='Focos de Calor Total', index=False)
 excel_data_final.save()
  #--Number of hot spots per city - AQUA
-if filter_1.shape[0] > 0:
-  excel_tabela_aqua = pd.ExcelWriter("Y:/METEOROLOGIA/Boletins Meteorológicos/Boletim Diário de Focos de Calor/Dados_diarios/Satelite_referencia/TOTAL" + '_-_' + "AQUA" + '_-_' + date_corr + '_-_' + time_is_it + ".xlsx", engine='xlsxwriter')
-  tabela_aqua.to_excel(excel_tabela_aqua, sheet_name='Focos de Calor AQUA', index=False)
-  excel_tabela_aqua.save()
 
+excel_tabela_aqua = pd.ExcelWriter("Y:/METEOROLOGIA/Boletins Meteorológicos/Boletim Diário de Focos de Calor/Dados_diarios/Satelite_referencia/TOTAL" + '_-_' + "AQUA" + '_-_' + date_corr + '_-_' + time_is_it + ".xlsx", engine='xlsxwriter')
+tabela_aqua.to_excel(excel_tabela_aqua, sheet_name='Focos de Calor AQUA', index=False)
+excel_tabela_aqua.save()
 
-if filter_1.shape[0] > 0:
+filter_1 = data_aqte[(data_aqte['satellite']== 'AQUA') & (data_aqte['daynight'] == 'D')]
+
+if (filter_1.shape[0] > 0) and (date_corr not in date_data):
   print('Enviando e-mail...')
   #Email
 
@@ -188,7 +195,7 @@ if filter_1.shape[0] > 0:
   </table>
 
   """
-  
+
   email.Attachments.Add("Y:/METEOROLOGIA/Boletins Meteorológicos/Boletim Diário de Focos de Calor/Dados_diarios/Satelite_referencia/TOTAL" + '_-_' + "AQUA" + '_-_' + date_corr + '_-_' + time_is_it + ".xlsx")
   email.Send()
   print("Email Enviado")
