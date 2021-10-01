@@ -42,7 +42,7 @@ data_hj = datetime.date.today().strftime("%Y-%m-%d")
 data_arquivo = str(date.today().year) + str(datestdtojd(data_hj))
 
 #Nasa Authorization
-my_headers = {'Authorization' : 'Bearer {YWxpc3Nvbi5hbWFyYWw6WVd4cGMzTnZiaTVoYldGeVlXeEFhVzVsYldFdVltRXVaMjkyTG1KeToxNjI3MzA4NjEzOjhiZDhkOGM3OTlmMWUxMzVmMGM5ZGY1NjkxN2JhYmNhNzc3OGIzNGY}'}
+my_headers = {'Authorization' : 'Bearer {**}'}
 
 #Nasa_links
 noaa_link = 'https://nrt3.modaps.eosdis.nasa.gov/api/v2/content/archives/FIRMS/noaa-20-viirs-c2/South_America/J1_VIIRS_C2_South_America_VJ114IMGTDL_NRT_' + data_arquivo + '.txt'
@@ -158,7 +158,7 @@ if (filter_1.shape[0] > 0) and (date_corr not in date_data):
   # criar um email
   email = outlook.CreateItem(0)
   # configurar as informações do seu e-mail
-  email.To = "ascom@inema.ba.gov.br; meteorologia@inema.ba.gov.br; alisson.amaral@inema.ba.gov.br"
+  email.To = "**"
   email.Subject = "Focos de Calor na Bahia - " + date_corr + " - COCEP/DIRAM"
 
   email.HTMLBody = f"""
