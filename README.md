@@ -1,4 +1,4 @@
-# Automatização da coleta, processamento e análise de focos de calor dos satélites NOAA, AQUA, TERRA e NPP-375
+# Automatização do monitoramento de focos de calor dos satélites NOAA, AQUA, TERRA e NPP-375
 
 ![Nasa Earth](https://user-images.githubusercontent.com/67293732/150850914-4b996b66-6d4b-4ede-8573-3938702c5da3.JPG)
 
