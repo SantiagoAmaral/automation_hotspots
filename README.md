@@ -6,4 +6,18 @@
 
 O Código python acessa a API da Nasa, pré processa os dados de focos de calor na Bahia, identifica os municípios com maior registro, as Unidades de Conservação com maiores registros, monta tabelas e envia para as autoridades competentes no Estado.
 
+Bibliotecas ultilizadas:
+* pandas
+* numpy
+* geopandas
+* requests
+* plotly
+* datetime
+* pathlib
+* six
+* xlsxwriter
+* time
+* metplotlib
+* io
+
 Developed by Alisson Santiago Amaral
